@@ -1,5 +1,4 @@
 #Functions
-from ast import While
 import random
 def pick_a_door():
     doors = ['1', '2', '3']
@@ -26,7 +25,12 @@ input_response = input().strip().lower()
 while input_response == 'yes':
     print("There are 3 doors infront of you: Door 1, Door 2, and Door 3. Pick one to go through: (1/2/3)")
     false_door = pick_a_door()
-    player_choice = int(input())
+    while True:
+        player_choice = int(input().strip())
+        if player_choice in [1, 2, 3]:
+            break
+        else:
+            print("Invalid choice. Please pick Door 1, Door 2, or Door 3: (1/2/3)")
     if str(player_choice) == false_door:
         print(f"Oh no! You picked Door {false_door} and you got lost in {anomalies()}! Game Over.")
         print("Would you like to try again? (yes/no)")
